@@ -33,22 +33,22 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginAct
     	
     	solo.waitForActivity("LoginActivity", 20000);
     	solo.assertCurrentActivity("wrong activity", LoginActivity.class);
-    	solo.clickOnButton("Σύνδεση");
-    	assertTrue(solo.waitForText("Παρακαλώ συμπληρώστε όλα τα πεδία"));
+    	solo.clickOnButton("Login");
+    	assertTrue(solo.waitForText("Please make sure to fill all the fields"));
     
     }
     
     
     public void test_ClickOnRegisterButton () throws Exception {
     	
-    	solo.clickOnButton("Εγγραφή");
+    	solo.clickOnButton("Register");
     	solo.waitForActivity("RegisterActivity", 20000);
     	solo.assertCurrentActivity("wrong activity", RegisterActivity.class);
     	solo.goBack();
     }
     
     
-    public void TestWrongUserInfo() throws Exception {
+   /* public void TestWrongUserInfo() throws Exception {
     	
     	solo.waitForActivity("LoginActivity", 20000);
     	solo.assertCurrentActivity("wrong activity", LoginActivity.class);
@@ -58,10 +58,10 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginAct
         solo.enterText(0,strName); //username
         solo.clickOnEditText(1);
         solo.enterText(1,strPass); //password
-        solo.clickOnButton("Σύνδεση");
-        assertTrue(solo.searchText("Γίνετε ο έλεγχος των στοιχείων..."));
-        assertTrue(solo.waitForText("Τα στοιχεία είναι λάθος")); 
-    }
+        solo.clickOnButton("Login");
+        assertTrue(solo.searchText("Checking your information... Please wait..."));
+        assertTrue(solo.waitForText("Invalid username or password")); 
+    } */
   
   
      public void test_CorrectUserInfo() throws Exception {
@@ -74,9 +74,9 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginAct
 	    solo.enterText(0,strName); //username
 	    solo.clickOnEditText(1);
 	    solo.enterText(1,strPass); //password
-	    solo.clickOnButton("Σύνδεση");
-	    assertTrue(solo.searchText("Γίνετε ο έλεγχος των στοιχείων..."));
-	    assertTrue(solo.waitForText("Καλώς ήρθατε"));
+	    solo.clickOnButton("Login");
+	    assertTrue(solo.searchText("Checking your information... Please wait..."));
+	    assertTrue(solo.waitForText("Welcome"));
 	    solo.waitForActivity("MainActivity", 20000);
     	solo.assertCurrentActivity("wrong activity", MainActivity.class);
     	solo.goBack();
