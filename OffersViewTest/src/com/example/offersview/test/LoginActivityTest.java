@@ -34,7 +34,7 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginAct
     	solo.waitForActivity("LoginActivity", 20000);
     	solo.assertCurrentActivity("wrong activity", LoginActivity.class);
     	solo.clickOnButton("Login");
-    	assertTrue(solo.waitForText("Please make sure to fill all the fields"));
+    	assertTrue(solo.waitForText("Please make sure you fill in all required fields"));
     
     }
     
@@ -48,7 +48,7 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginAct
     }
     
     
-   /* public void TestWrongUserInfo() throws Exception {
+    public void TestWrongUserInfo() throws Exception {
     	
     	solo.waitForActivity("LoginActivity", 20000);
     	solo.assertCurrentActivity("wrong activity", LoginActivity.class);
@@ -61,7 +61,7 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginAct
         solo.clickOnButton("Login");
         assertTrue(solo.searchText("Checking your information... Please wait..."));
         assertTrue(solo.waitForText("Invalid username or password")); 
-    } */
+    } 
   
   
      public void test_CorrectUserInfo() throws Exception {
