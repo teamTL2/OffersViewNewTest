@@ -1,19 +1,17 @@
 package com.example.offersview.test;
 
-
-
 import android.test.ActivityInstrumentationTestCase2;
+
+import com.example.offersview.activities.NearestShopsActivity;
 import com.example.offersview.activities.ShopDetailsActivity;
-import com.example.offersview.activities.ShopListActivity;
 import com.robotium.solo.Solo;
 
-public class ShopListActivityTest extends ActivityInstrumentationTestCase2<ShopListActivity> {
-
+public class NearestShopsActivityTest extends ActivityInstrumentationTestCase2<NearestShopsActivity> {
 private Solo solo;
 	
 	@SuppressWarnings("deprecation")
-	public ShopListActivityTest(){
-    	super("com.example.offersview.activities", ShopListActivity.class);
+	public NearestShopsActivityTest(){
+    	super("com.example.offersview.activities", NearestShopsActivity.class);
     }
     
     
@@ -28,17 +26,18 @@ private Solo solo;
     public void test_ClickOnShopList () throws Exception {
 
     	
-    	solo.waitForActivity("ShopListActivity", 20000);
-    	assertTrue(solo.searchText("Loading shops. Please wait..."));
+    	solo.waitForActivity("NearestShopsActivity", 20000);
+    	//assertTrue(solo.searchText("Loading shops. Please wait..."));
     	solo.clickInList(1);
-    	if(solo.waitForText("There are no shops")){
+		if(solo.waitForText("There are no shops near you")){
 	    	solo.goBack();
 		}else{
-			assertTrue(solo.searchText("Loading information. Please wait..."));
-    		solo.waitForActivity("ShopDetailsActivity", 20000);
-    		solo.assertCurrentActivity("wrong activity", ShopDetailsActivity.class);
-    	    solo.goBack();
-    	}    	
+			solo.waitForActivity("ShopDetailsActivity", 20000);
+			solo.assertCurrentActivity("wrong activity", ShopDetailsActivity.class);
+	    	
+	    	solo.goBack();
+		}
+		
     }
     
     @Override
@@ -51,6 +50,5 @@ private Solo solo;
                 getActivity().finish();
                 super.tearDown();
      }
-    
-    
 }
+
